@@ -1,0 +1,24 @@
+.dark-theme {
+    --primary-color: #64b5f6;
+    --secondary-color: #ffb74d;
+    --text-color: #ffffff;
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+}
+
+.dark-theme body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.dark-theme .header {
+    background: rgba(30, 30, 30, 0.95);
+}
+
+.dark-theme .card {
+    background: var(--card-bg);
+}
+
+.dark-theme .footer {
+    background: #000000;
+} 

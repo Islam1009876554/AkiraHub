@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7 чудес Казахстана</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/dark-theme.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+<body>
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">7 Чудес</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="wonders.html" class="active">Чудеса</a></li>
+                <li><a href="info.html">Информация о Казахстане</a></li>
+                <li><a href="quiz.html">Квиз</a></li>
+            </ul>
+            <button id="theme-toggle" class="theme-toggle">
+                <i class="fas fa-sun sun-icon"></i>
+                <i class="fas fa-moon moon-icon"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>7 чудес Казахстана</h1>
+                <h2>Откройте для себя уникальные места нашей страны</h2>
+                <div class="hero-buttons">
+                    <a href="wonders.html" class="hero-btn primary-btn">Исследовать чудеса</a>
+                    <a href="#about" class="hero-btn secondary-btn">Узнать больше</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="map-section">
+            <h2 class="map-title">Карта чудес Казахстана</h2>
+            <div id="map"></div>
+        </section>
+
+        <section class="weather-widget">
+            <h2>Погода в местах</h2>
+            <div id="weather-container" class="weather-container">
+                <!-- Погода будет загружена через API -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>О проекте</h3>
+                <p>Исследуйте удивительные места Казахстана</p>
+            </div>
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="js/wonders-data.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/weather.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/preloader.js"></script>
+</body>
+</html>

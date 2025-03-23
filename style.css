@@ -1985,37 +1985,19 @@ body:not(.dark-theme) .moon-icon {
 }
 
 .panel-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 8px 16px;
-    background: linear-gradient(135deg, #2196f3, #1976D2);
-    color: white !important;
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50px;
     text-decoration: none;
-    border-radius: 20px;
-    font-size: 14px;
-    font-weight: 500;
-    border: none;
-    cursor: pointer;
+    font-size: 0.9rem;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    margin-top: 10px;
 }
 
 .panel-btn:hover {
-    background: linear-gradient(135deg, #1976D2, #0D47A1);
+    background: #1976d2;
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.panel-btn i {
-    font-size: 12px;
-    transition: transform 0.3s;
-}
-
-.panel-btn:hover i {
-    transform: translateX(3px);
 }
 
 /* Стили для маркеров на карте */
@@ -3039,217 +3021,271 @@ body:not(.dark-theme) .moon-icon {
     background-color: #2196F3;
 }
 
-/* Стили для маркеров на карте */
-.custom-marker {
+/* Стили для модального окна чудес */
+.wonder-modal {
+    position: fixed;
+    z-index: 1000;
+    right: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: flex-end;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    overflow: hidden;
 }
 
-.marker-icon {
+.wonder-modal.active {
+    opacity: 1;
+    visibility: visible;
+    width: 100%;
+}
+
+.wonder-modal-content {
+    background: white;
+    width: 90%;
+    max-width: 450px;
+    height: 100%;
+    border-radius: 0;
+    overflow: hidden;
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.25);
+    transform: translateX(100%);
+    transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    position: relative;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+}
+
+.wonder-modal.active .wonder-modal-content {
+    transform: translateX(0);
+}
+
+.wonder-modal-body {
+    flex: 1;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(33, 150, 243, 0.6) transparent;
+}
+
+/* Стили для скроллбара (для Chrome, Safari) */
+.wonder-modal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.wonder-modal-body::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+.wonder-modal-body::-webkit-scrollbar-thumb {
+    background-color: rgba(33, 150, 243, 0.6);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.wonder-modal-body::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(33, 150, 243, 0.8);
+}
+
+/* Стили для скроллбара в темной теме */
+.dark-theme .wonder-modal-body {
+    scrollbar-color: rgba(66, 165, 245, 0.6) rgba(30, 30, 30, 0.3);
+}
+
+.dark-theme .wonder-modal-body::-webkit-scrollbar-track {
+    background: rgba(30, 30, 30, 0.3);
+}
+
+.dark-theme .wonder-modal-body::-webkit-scrollbar-thumb {
+    background-color: rgba(66, 165, 245, 0.6);
+}
+
+.dark-theme .wonder-modal-body::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(66, 165, 245, 0.8);
+}
+
+.wonder-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    color: white;
+    background: rgba(0, 0, 0, 0.3);
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: white;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-    color: white;
-    font-size: 18px;
-    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(2px);
+}
+
+.wonder-modal-close:hover {
+    background: rgba(255, 0, 0, 0.7);
+    transform: rotate(90deg);
+}
+
+.wonder-modal-image-container {
+    height: 250px;
+    overflow: hidden;
     position: relative;
-    overflow: hidden;
 }
 
-.marker-icon::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    z-index: -1;
-}
-
-.nature-marker .marker-icon {
-    background: linear-gradient(135deg, #4CAF50, #2E7D32);
-}
-
-.culture-marker .marker-icon {
-    background: linear-gradient(135deg, #2196F3, #1565C0);
-}
-
-.marker-icon:hover {
-    transform: scale(1.1);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-/* Стили для попапов */
-.custom-popup-container {
-    padding: 0;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-    border: none;
-}
-
-.custom-popup {
-    width: 280px;
-}
-
-.popup-image {
-    height: 150px;
-    overflow: hidden;
-}
-
-.popup-image img {
+.wonder-modal-image-container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s;
+    transition: transform 0.5s ease;
 }
 
-.popup-image:hover img {
-    transform: scale(1.05);
+.wonder-modal-header {
+    position: relative;
 }
 
-.popup-content {
-    padding: 15px;
+.wonder-modal-header h2 {
+    position: absolute;
+    bottom: 50px;
+    left: 20px;
+    color: white;
+    margin: 0;
+    font-size: 28px;
+    font-weight: 700;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
 }
 
-.popup-content h3 {
-    margin: 0 0 10px;
-    color: #333;
-    font-size: 18px;
-}
-
-.popup-content p {
-    margin: 0 0 15px;
-    color: #666;
-    font-size: 14px;
-    line-height: 1.4;
-}
-
-.popup-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 8px 16px;
-    background: linear-gradient(135deg, #2196f3, #1976D2);
-    color: white !important;
-    text-decoration: none;
+.wonder-modal-type {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 5px 15px;
     border-radius: 20px;
     font-size: 14px;
-    font-weight: 500;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    margin-top: 10px;
-}
-
-.popup-btn:hover {
-    background: linear-gradient(135deg, #1976D2, #0D47A1);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.popup-btn i {
-    font-size: 12px;
-    transition: transform 0.3s;
-}
-
-.popup-btn:hover i {
-    transform: translateX(3px);
-}
-
-/* Стили для информационной панели */
-.wonder-info-panel {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
-    max-width: 300px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    overflow: hidden;
-    opacity: 0.95;
-    transition: all 0.3s ease;
-}
-
-.wonder-info-panel:hover {
-    opacity: 1;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-}
-
-.panel-content {
-    padding: 15px;
-}
-
-.panel-header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
+    gap: 8px;
+    backdrop-filter: blur(5px);
 }
 
-.panel-header h3 {
-    margin: 0;
+.wonder-modal-content-wrapper {
+    padding: 20px;
+    min-height: 100%;
+}
+
+.wonder-modal-description {
+    margin-bottom: 20px;
     font-size: 16px;
+    line-height: 1.6;
+}
+
+.wonder-modal-location {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 12px 15px;
+    background: #f5f5f5;
+    border-radius: 10px;
+}
+
+.wonder-modal-location i {
+    color: #e91e63;
+    font-size: 20px;
+    margin-top: 3px;
+}
+
+.wonder-modal-location p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.wonder-modal-features {
+    background: #f5f5f5;
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+}
+
+.wonder-modal-features h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 18px;
     color: #333;
 }
 
-.panel-pin-button {
-    background: none;
-    border: none;
-    color: #999;
-    cursor: pointer;
+.wonder-modal-features ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.wonder-modal-features li {
+    margin-bottom: 8px;
     font-size: 14px;
-    transition: color 0.3s;
 }
 
-.panel-pin-button:hover,
-.panel-pin-button.pinned {
-    color: var(--primary-color);
+.wonder-modal-footer {
+    margin-top: 25px;
+    text-align: center;
 }
 
-/* Добавляем медиа-запрос для мобильных устройств */
+.wonder-modal-link {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+}
+
+.wonder-modal-link:hover {
+    background-color: #1976d2;
+    box-shadow: 0 6px 20px rgba(33, 150, 243, 0.4);
+    transform: translateY(-2px);
+}
+
+.wonder-modal-link i {
+    margin-left: 8px;
+}
+
+/* Темная тема для модального окна */
+.dark-theme .wonder-modal-content {
+    background: #1a1a1a;
+    color: #e0e0e0;
+}
+
+.dark-theme .wonder-modal-location {
+    background-color: #2c2c2c;
+    color: #e0e0e0;
+}
+
+.dark-theme .wonder-modal-features {
+    background-color: #2c2c2c;
+}
+
+.dark-theme .wonder-modal-features h4 {
+    color: #e0e0e0;
+}
+
+/* Мобильная адаптивность */
 @media (max-width: 768px) {
-    .wonder-info-panel {
-        max-width: 250px;
-        font-size: 14px;
+    .wonder-modal-content {
+        max-width: 90%;
     }
     
-    .panel-header h3 {
-        font-size: 15px;
+    .wonder-modal-header h2 {
+        font-size: 22px;
     }
-}
-
-/* Градиентный фон для секции wonders-hero */
-.gradient-bg {
-    background: linear-gradient(135deg, #64b5f6, #2196f3);
-    position: relative;
-    overflow: hidden;
-}
-
-.gradient-bg .wonders-hero-overlay {
-    background: none;
-    opacity: 0.1;
-}
-
-.gradient-bg .animated-title,
-.gradient-bg .animated-subtitle {
-    color: #fff;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-}
-
-/* Темная тема для градиентного фона */
-.dark-theme .gradient-bg {
-    background: linear-gradient(135deg, #1976d2, #0d47a1);
-}
-
-.dark-theme .gradient-bg .animated-title,
-.dark-theme .gradient-bg .animated-subtitle {
-    color: #fff;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }

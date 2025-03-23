@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="css/dark-theme.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 </head>
 <body>
     <header>
@@ -30,7 +29,7 @@
     </header>
 
     <main>
-        <section class="wonders-hero gradient-bg">
+        <section class="wonders-hero">
             <div class="wonders-hero-overlay"></div>
             <div class="wonders-hero-content">
                 <h1 class="animated-title">7 чудес Казахстана</h1>
@@ -198,17 +197,10 @@
             </div>
         </section>
         
-        <section class="map-section">
+        <section class="wonders-map-section">
             <div class="container">
-                <div class="section-header">
-                    <h2>Карта чудес Казахстана</h2>
-                    <div class="section-divider">
-                        <span></span>
-                        <i class="fas fa-map-marked-alt"></i>
-                        <span></span>
-                    </div>
-                </div>
-                <p class="section-description">Исследуйте удивительные места Казахстана на интерактивной карте</p>
+                <h2 class="section-title">Карта чудес</h2>
+                <p class="section-description">Исследуйте расположение всех семи чудес Казахстана на интерактивной карте</p>
                 <div id="wonders-map"></div>
             </div>
         </section>
@@ -273,9 +265,22 @@
     </footer>
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <script src="js/wonders-data.js"></script>
     <script src="js/map.js"></script>
     <script src="js/wonders-map.js"></script>
     <script src="js/theme.js"></script>
+
+    <!-- Модальное окно для информации о чудесах -->
+    <div id="wonder-modal" class="wonder-modal">
+        <div class="wonder-modal-content">
+            <span class="wonder-modal-close">&times;</span>
+            <div id="wonder-modal-body" class="wonder-modal-body">
+                <!-- Содержимое будет добавлено динамически -->
+            </div>
+        </div>
+    </div>
+
+    <script src="js/wonders-info.js"></script>
 </body>
 </html> 

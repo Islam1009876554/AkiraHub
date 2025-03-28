@@ -3289,3 +3289,108 @@ body:not(.dark-theme) .moon-icon {
         font-size: 22px;
     }
 }
+
+/* Улучшенный стиль для кнопки "Подробнее" */
+.wonder-btn.primary-btn,
+.popup-btn,
+a.popup-btn,
+.custom-popup .popup-btn,
+.custom-popup a.popup-btn,
+.leaflet-popup-content .popup-btn,
+.leaflet-popup-content a.popup-btn,
+.wonder-modal-body .popup-btn,
+.wonder-modal-body a.popup-btn,
+[class*="подробнее"] {
+    background-color: #007bff !important;
+    color: white !important;
+    font-weight: 600 !important;
+    padding: 10px 20px !important;
+    border-radius: 5px !important;
+    transition: all 0.3s ease !important;
+    border: none !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2) !important;
+    display: inline-block !important;
+    text-decoration: none !important;
+    text-align: center !important;
+    cursor: pointer !important;
+    margin-top: 10px !important;
+}
+
+.wonder-btn.primary-btn:hover,
+.popup-btn:hover,
+a.popup-btn:hover,
+.custom-popup .popup-btn:hover,
+.custom-popup a.popup-btn:hover,
+.leaflet-popup-content .popup-btn:hover,
+.leaflet-popup-content a.popup-btn:hover,
+.wonder-modal-body .popup-btn:hover,
+.wonder-modal-body a.popup-btn:hover,
+[class*="подробнее"]:hover {
+    background-color: #0056b3 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Специфичный стиль для кнопки в попапе карты */
+.leaflet-popup-content a[href],
+.leaflet-popup-content a.popup-btn,
+.leaflet-popup-content .popup-btn {
+    background-color: #007bff !important;
+    color: white !important;
+    padding: 10px 0 !important;
+    border-radius: 5px !important;
+    text-decoration: none !important;
+    display: block !important;
+    font-weight: bold !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2) !important;
+    border: none !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    text-align: center !important;
+    width: 100% !important;
+    margin-top: 10px !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+.leaflet-popup-content a[href]:hover,
+.leaflet-popup-content a.popup-btn:hover,
+.leaflet-popup-content .popup-btn:hover {
+    background-color: #0056b3 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Улучшенный стиль для попапа */
+.leaflet-popup-content-wrapper {
+    padding: 0 !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+}
+
+.leaflet-popup-content {
+    margin: 0 !important;
+    width: 250px !important;
+}
+
+.custom-popup {
+    padding: 0 !important;
+}
+
+.popup-content {
+    padding: 15px !important;
+}
+
+.popup-content h3 {
+    margin-top: 0 !important;
+    margin-bottom: 10px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+}
+
+.popup-content p {
+    margin-bottom: 15px !important;
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+}

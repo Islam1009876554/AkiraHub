@@ -1,3 +1,12 @@
+/**
+ * theme.js
+ * 
+ * Переключение между светлой и темной темой сайта.
+ * Функции:
+ * - Сохранение выбранной темы в localStorage
+ * - Обновление иконок переключателя темы
+ * - Применение соответствующих стилей к элементам страницы
+ */
 document.addEventListener('DOMContentLoaded', function() {
     const themeToggles = document.querySelectorAll('.theme-toggle');
     const body = document.body;

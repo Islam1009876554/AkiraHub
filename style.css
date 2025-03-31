@@ -1,3 +1,15 @@
+/**
+ * style.css
+ * 
+ * Основные стили сайта "7 чудес Казахстана".
+ * Содержит:
+ * - CSS-переменные для цветов и эффектов
+ * - Стили для навигации и общей структуры
+ * - Стили для карт, квиза и информационных блоков
+ * - Адаптивные стили для разных устройств
+ * - Анимации и эффекты для улучшения пользовательского опыта
+ */
+
 /* Современные переменные для цветов и эффектов */
 :root {
     --primary-color: #2196f3;
@@ -1089,12 +1101,12 @@ footer {
 
 /* Карта */
 .dark-theme .leaflet-container {
-    background-color: var(--dark-bg-secondary);
+    background-color: #242424;
     filter: brightness(0.8) contrast(0.9);
 }
 
 .dark-theme .leaflet-tile {
-    filter: invert(100%) hue-rotate(180deg) brightness(85%) contrast(85%);
+    filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
 }
 
 /* Всплывающие окна карты */
@@ -1288,6 +1300,7 @@ body:not(.dark-theme) .moon-icon {
 /* Стили для карты в темной теме */
 .dark-theme .leaflet-container {
     background-color: #242424;
+    filter: brightness(0.8) contrast(0.9);
 }
 
 .dark-theme .leaflet-tile {
